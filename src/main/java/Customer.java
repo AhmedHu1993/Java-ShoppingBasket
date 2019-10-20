@@ -58,7 +58,7 @@ public class Customer {
         return this.totalBasketPrice;
     }
 
-    public double totalPriceAfterBuyOneGetOne() {
+    public void applyBuyOneGetOne() {
 
         int numberOfProductsToGetItsPrices = (shoppingBasket.size() % 2 == 0) ? shoppingBasket.size() / 2 : (shoppingBasket.size() + 1) / 2;
 
@@ -80,7 +80,7 @@ public class Customer {
             }
         }
 
-        return pricesAfterDiscountToPay;
+        this.totalBasketPrice = pricesAfterDiscountToPay;
     }
 
     public void applyTenPercentDiscount() {
@@ -100,7 +100,7 @@ public class Customer {
     }
 
     public void applyAllDiscounts() {
-        this.totalBasketPrice = totalPriceAfterBuyOneGetOne();
+        applyBuyOneGetOne();
         applyTenPercentDiscount();
         applyLoyalityDiscount();
     }

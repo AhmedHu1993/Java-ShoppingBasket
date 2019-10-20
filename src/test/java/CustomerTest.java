@@ -75,7 +75,8 @@ public class CustomerTest {
         customer.addToBasket(product3);
         customer.addToBasket(product4);
         customer.addToBasket(product5);
-        assertEquals(135.5, customer.totalPriceAfterBuyOneGetOne(), 0);
+        customer.applyBuyOneGetOne();
+        assertEquals(135.5, customer.getTotalBasketPrice(), 0);
     }
 
     @Test
@@ -84,7 +85,8 @@ public class CustomerTest {
         customer.addToBasket(product2);
         customer.addToBasket(product3);
         customer.addToBasket(product4);
-        assertEquals(75.5, customer.totalPriceAfterBuyOneGetOne(), 0);
+        customer.applyBuyOneGetOne();
+        assertEquals(75.5, customer.getTotalBasketPrice(), 0);
     }
 
     @Test
