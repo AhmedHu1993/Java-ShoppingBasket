@@ -32,4 +32,8 @@ public class Customer {
     public void emptyBasket() {
         this.shoppingBasket.clear();
     }
+
+    public void removeFromBasket(IPurchasing product) {
+        this.shoppingBasket.remove(product);
+    }
 }

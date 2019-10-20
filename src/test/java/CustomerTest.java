@@ -45,4 +45,13 @@ public class CustomerTest {
         customer.emptyBasket();
         assertEquals(0, customer.getShoppingBasket().size());
     }
+
+    @Test
+    public void testRemoveProductFromBasket(){
+        customer.addToBasket(product1);
+        customer.addToBasket(product2);
+        customer.removeFromBasket(product1);
+        assertEquals(product2, customer.getShoppingBasket().get(0));
+        assertEquals(1, customer.getShoppingBasket().size());
+    }
 }
