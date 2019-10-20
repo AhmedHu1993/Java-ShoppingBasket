@@ -6,8 +6,8 @@ import static org.junit.Assert.assertEquals;
 public class CustomerTest {
 
     Customer customer;
-    Product product1;
-    Product product2;
+    IPurchasing product1;
+    IPurchasing product2;
 
     @Before
     public void before(){
@@ -29,5 +29,12 @@ public class CustomerTest {
     @Test
     public void customerShoppingBasketStartsEmpty() {
         assertEquals(0 , customer.getShoppingBasket().size());
+    }
+
+    @Test
+    public void testAddToBasket(){
+        customer.addToBasket(product1);
+        customer.addToBasket(product2);
+        assertEquals(2, customer.getShoppingBasket().size());
     }
 }

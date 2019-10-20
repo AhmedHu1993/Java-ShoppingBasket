@@ -23,4 +23,9 @@ public class Customer {
     public ArrayList<IPurchasing> getShoppingBasket() {
         return shoppingBasket;
     }
+
+
+    public void addToBasket(IPurchasing product) {
+        this.shoppingBasket.add(product);
+    }
 }
