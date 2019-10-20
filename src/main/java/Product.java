@@ -1,4 +1,4 @@
-public class Product {
+public class Product implements IPurchasing {
 
     private String name;
     private String description;
