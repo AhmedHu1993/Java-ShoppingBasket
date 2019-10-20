@@ -36,4 +36,20 @@ public class Customer {
     public void removeFromBasket(IPurchasing product) {
         this.shoppingBasket.remove(product);
     }
+
+    public double totalBasketPrice() {
+        ArrayList<Double> prices = new ArrayList<Double>();
+
+        for (IPurchasing product : shoppingBasket) {
+            prices.add(product.getPrice());
+        }
+
+        double totalPrice = 0;
+
+        for (double price : prices){
+            totalPrice += price;
+        }
+
+        return totalPrice;
+    }
 }

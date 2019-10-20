@@ -54,4 +54,11 @@ public class CustomerTest {
         assertEquals(product2, customer.getShoppingBasket().get(0));
         assertEquals(1, customer.getShoppingBasket().size());
     }
+
+    @Test
+    public void testBasketTotalPriceWithNoDiscounts(){
+        customer.addToBasket(product1);
+        customer.addToBasket(product2);
+        assertEquals(57.5, customer.totalBasketPrice(), 0);
+    }
 }
