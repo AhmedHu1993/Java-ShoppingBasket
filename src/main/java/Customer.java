@@ -83,11 +83,9 @@ public class Customer {
         return pricesAfterDiscountToPay;
     }
 
-    public double getTenPercentDiscount() {
+    public void applyTenPercentDiscount() {
         if (totalBasketPrice > 20){
-            return totalBasketPrice * 0.9;
-        } else {
-            return totalBasketPrice;
+             totalBasketPrice *= 0.9;
         }
     }
 
@@ -95,11 +93,15 @@ public class Customer {
         this.purchaseCount += 1;
     }
 
-    public double getTotalPriceAfterLoyalityDiscount() {
+    public void applyLoyalityDiscount() {
         if (this.purchaseCount >= 2){
-            return totalBasketPrice * 0.98;
-        } else {
-            return totalBasketPrice;
+            totalBasketPrice *= 0.98;
         }
+    }
+
+    public void applyAllDiscounts() {
+        this.totalBasketPrice = totalPriceAfterBuyOneGetOne();
+        applyTenPercentDiscount();
+        applyLoyalityDiscount();
     }
 }

@@ -91,7 +91,8 @@ public class CustomerTest {
     public void testTenPercentDiscountOnTotalsGreaterThanTwenty(){
         customer.addToBasket(product3);
         customer.addToBasket(product2);
-        assertEquals(63 , customer.getTenPercentDiscount(), 0);
+        customer.applyTenPercentDiscount();
+        assertEquals(63 , customer.getTotalBasketPrice(), 0);
     }
 
     @Test
@@ -100,8 +101,20 @@ public class CustomerTest {
         customer.completePurchase();
         customer.addToBasket(product3);
         customer.addToBasket(product2);
-        assertEquals(68.6 , customer.getTotalPriceAfterLoyalityDiscount(), 0);
+        customer.applyLoyalityDiscount();
+        assertEquals(68.6 , customer.getTotalBasketPrice(), 0);
     }
 
-
+    @Test
+    public void testApplyAllDiscounts(){
+        customer.completePurchase();
+        customer.completePurchase();
+        customer.addToBasket(product1);
+        customer.addToBasket(product2);
+        customer.addToBasket(product3);
+        customer.addToBasket(product4);
+        customer.addToBasket(product5);
+        customer.applyAllDiscounts();
+        assertEquals(119.5, customer.getTotalBasketPrice(), 0.5);
+    }
 }
