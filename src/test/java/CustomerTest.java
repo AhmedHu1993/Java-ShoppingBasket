@@ -65,7 +65,7 @@ public class CustomerTest {
     public void testBasketTotalPriceWithNoDiscounts(){
         customer.addToBasket(product1);
         customer.addToBasket(product2);
-        assertEquals(57.5, customer.totalBasketPrice(), 0);
+        assertEquals(57.5, customer.getTotalBasketPrice(), 0);
     }
 
     @Test
@@ -102,4 +102,6 @@ public class CustomerTest {
         customer.addToBasket(product2);
         assertEquals(68.6 , customer.getTotalPriceAfterLoyalityDiscount(), 0);
     }
+
+
 }

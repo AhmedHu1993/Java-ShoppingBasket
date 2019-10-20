@@ -6,11 +6,13 @@ public class Customer {
     private String name;
     private int purchaseCount;
     private ArrayList<IPurchasing> shoppingBasket;
+    private double totalBasketPrice;
 
     public Customer(String name){
         this.name = name;
         this.purchaseCount = 0;
         this.shoppingBasket = new ArrayList<IPurchasing>();
+        this.totalBasketPrice = 0;
     }
 
     public String getName() {
@@ -28,14 +30,17 @@ public class Customer {
 
     public void addToBasket(IPurchasing product) {
         this.shoppingBasket.add(product);
+        this.totalBasketPrice += product.getPrice();
     }
 
     public void emptyBasket() {
         this.shoppingBasket.clear();
+        this.totalBasketPrice = 0;
     }
 
     public void removeFromBasket(IPurchasing product) {
         this.shoppingBasket.remove(product);
+        this.totalBasketPrice -= product.getPrice();
     }
 
     private ArrayList<Double> getPricesArrayList(){
@@ -49,19 +54,11 @@ public class Customer {
         return prices;
     }
 
-    public double totalBasketPrice() {
-
-        double totalPrice = 0;
-
-        for (double price : getPricesArrayList()){
-            totalPrice += price;
-        }
-
-        return totalPrice;
+    public double getTotalBasketPrice(){
+        return this.totalBasketPrice;
     }
 
     public double totalPriceAfterBuyOneGetOne() {
-
 
         int numberOfProductsToGetItsPrices = (shoppingBasket.size() % 2 == 0) ? shoppingBasket.size() / 2 : (shoppingBasket.size() + 1) / 2;
 
@@ -87,10 +84,10 @@ public class Customer {
     }
 
     public double getTenPercentDiscount() {
-        if (totalBasketPrice() > 20){
-            return totalBasketPrice() * 0.9;
+        if (totalBasketPrice > 20){
+            return totalBasketPrice * 0.9;
         } else {
-            return totalBasketPrice();
+            return totalBasketPrice;
         }
     }
 
@@ -100,9 +97,9 @@ public class Customer {
 
     public double getTotalPriceAfterLoyalityDiscount() {
         if (this.purchaseCount >= 2){
-            return totalBasketPrice() * 0.98;
+            return totalBasketPrice * 0.98;
         } else {
-            return totalBasketPrice();
+            return totalBasketPrice;
         }
     }
 }
