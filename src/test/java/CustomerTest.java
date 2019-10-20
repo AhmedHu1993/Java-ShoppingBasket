@@ -37,4 +37,12 @@ public class CustomerTest {
         customer.addToBasket(product2);
         assertEquals(2, customer.getShoppingBasket().size());
     }
+
+    @Test
+    public void testEmptyBasket(){
+        customer.addToBasket(product1);
+        customer.addToBasket(product2);
+        customer.emptyBasket();
+        assertEquals(0, customer.getShoppingBasket().size());
+    }
 }

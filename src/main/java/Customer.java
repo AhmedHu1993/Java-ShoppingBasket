@@ -28,4 +28,8 @@ public class Customer {
     public void addToBasket(IPurchasing product) {
         this.shoppingBasket.add(product);
     }
+
+    public void emptyBasket() {
+        this.shoppingBasket.clear();
+    }
 }
