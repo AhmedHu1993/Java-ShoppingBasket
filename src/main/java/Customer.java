@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Customer {
 
@@ -37,19 +38,51 @@ public class Customer {
         this.shoppingBasket.remove(product);
     }
 
-    public double totalBasketPrice() {
+    private ArrayList<Double> getPricesArrayList(){
+
         ArrayList<Double> prices = new ArrayList<Double>();
 
         for (IPurchasing product : shoppingBasket) {
             prices.add(product.getPrice());
         }
 
+        return prices;
+    }
+
+    public double totalBasketPrice() {
+
         double totalPrice = 0;
 
-        for (double price : prices){
+        for (double price : getPricesArrayList()){
             totalPrice += price;
         }
 
         return totalPrice;
+    }
+
+    public double totalPriceAfterBuyOneGetOne() {
+
+
+        int numberOfProductsToGetItsPrices = (shoppingBasket.size() % 2 == 0) ? shoppingBasket.size() / 2 : (shoppingBasket.size() + 1) / 2;
+
+        ArrayList<Double> prices = getPricesArrayList();
+        Collections.sort(prices);
+
+        double pricesAfterDiscountToPay = 0;
+
+        if (numberOfProductsToGetItsPrices % 2 == 0){
+
+            for (int i = prices.size() - 1 ; i > numberOfProductsToGetItsPrices - 1 ; i--){
+                pricesAfterDiscountToPay += prices.get(i);
+            }
+
+        } else {
+
+            for (int i = prices.size() - 1 ; i >= numberOfProductsToGetItsPrices - 1 ; i--){
+                pricesAfterDiscountToPay += prices.get(i);
+            }
+        }
+
+        return pricesAfterDiscountToPay;
     }
 }
