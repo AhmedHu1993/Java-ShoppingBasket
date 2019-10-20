@@ -93,4 +93,13 @@ public class CustomerTest {
         customer.addToBasket(product2);
         assertEquals(63 , customer.getTenPercentDiscount(), 0);
     }
+
+    @Test
+    public void test2OffForLoyalCustomers(){
+        customer.completePurchase();
+        customer.completePurchase();
+        customer.addToBasket(product3);
+        customer.addToBasket(product2);
+        assertEquals(68.6 , customer.getTotalPriceAfterLoyalityDiscount(), 0);
+    }
 }

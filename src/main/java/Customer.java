@@ -93,4 +93,16 @@ public class Customer {
             return totalBasketPrice();
         }
     }
+
+    public void completePurchase() {
+        this.purchaseCount += 1;
+    }
+
+    public double getTotalPriceAfterLoyalityDiscount() {
+        if (this.purchaseCount >= 2){
+            return totalBasketPrice() * 0.98;
+        } else {
+            return totalBasketPrice();
+        }
+    }
 }
