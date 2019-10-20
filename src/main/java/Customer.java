@@ -85,4 +85,12 @@ public class Customer {
 
         return pricesAfterDiscountToPay;
     }
+
+    public double getTenPercentDiscount() {
+        if (totalBasketPrice() > 20){
+            return totalBasketPrice() * 0.9;
+        } else {
+            return totalBasketPrice();
+        }
+    }
 }

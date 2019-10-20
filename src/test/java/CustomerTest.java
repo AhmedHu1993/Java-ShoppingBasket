@@ -86,4 +86,11 @@ public class CustomerTest {
         customer.addToBasket(product4);
         assertEquals(75.5, customer.totalPriceAfterBuyOneGetOne(), 0);
     }
+
+    @Test
+    public void testTenPercentDiscountOnTotalsGreaterThanTwenty(){
+        customer.addToBasket(product3);
+        customer.addToBasket(product2);
+        assertEquals(63 , customer.getTenPercentDiscount(), 0);
+    }
 }
